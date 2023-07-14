@@ -1,0 +1,28 @@
+@import "../../styles/variables.scss";
+
+.navbar {
+  padding: 2.4rem 4rem;
+}
+
+.navbarList {
+  display: flex;
+  align-items: center;
+  gap: 6rem;
+  list-style: none;
+}
+
+.navbarElement {
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: $color-grey-light;
+  text-decoration: none;
+
+  &:hover {
+    color: $color-white;
+    text-decoration: underline;
+  }
+}
+
+.navbarElementActive {
+  color: $color-white;
+}

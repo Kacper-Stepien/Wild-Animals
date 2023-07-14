@@ -1,0 +1,12 @@
+.page {
+  min-height: inherit;
+  background-image: url("../../assets/home_background.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+@media screen and (max-width: 600px) {
+  .page {
+    background-position: 20%;
+  }
+}
