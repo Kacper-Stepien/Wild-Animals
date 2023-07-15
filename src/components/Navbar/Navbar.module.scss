@@ -1,7 +1,11 @@
 @import "../../styles/variables.scss";
 
 .navbar {
+  width: 100%;
   padding: 2.4rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .navbarList {

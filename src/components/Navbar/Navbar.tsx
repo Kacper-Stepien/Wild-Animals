@@ -1,9 +1,13 @@
-import React from "react";
+import React, { FC } from "react";
 import { NavLink } from "react-router-dom";
 
 import styles from "./Navbar.module.scss";
 
-export default function Navbar() {
+interface NavbarProps {
+  children?: React.ReactNode;
+}
+
+const Navbar: FC<NavbarProps> = ({ children }) => {
   return (
     <nav className={styles.navbar}>
       <ul className={styles.navbarList}>
@@ -56,6 +60,9 @@ export default function Navbar() {
           </NavLink>
         </li>
       </ul>
+      {children}
     </nav>
   );
-}
+};
+
+export default Navbar;

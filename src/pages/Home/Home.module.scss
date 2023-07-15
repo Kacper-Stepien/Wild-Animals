@@ -10,3 +10,10 @@
     background-position: 20%;
   }
 }
+
+@media screen and (max-width: 400px) {
+  .page {
+    background-image: url("../../assets/home_background_phone.jpg");
+    background-position: bottom;
+  }
+}
