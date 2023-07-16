@@ -1,0 +1,50 @@
+@import "../../styles/variables.scss";
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  padding: 4rem 6rem;
+  border-radius: $border-radius;
+  background-color: rgba(0, 0, 0, 0.8);
+  animation: fadeInRight 1s ease-in-out;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: $color-primary;
+}
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.contactInput {
+  padding: 0.5rem 1rem;
+  border-radius: $border-radius;
+  border: none;
+  outline: none;
+  font-size: 1.8rem;
+}
+
+.contactTextarea {
+  resize: none;
+  width: 50rem;
+  height: 15rem;
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

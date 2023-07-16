@@ -6,15 +6,21 @@
   padding: 6rem;
   position: relative;
   margin: 4rem;
+  border-radius: $border-radius;
 
-  &:nth-child(2) {
+  &:nth-child(odd) {
+    animation: fadeInLeft 0.8s ease-in-out;
+  }
+
+  &:nth-child(even) {
     align-self: flex-end;
+    animation: fadeInRight 0.8s ease-in-out;
   }
 }
 
 .testimonialNum {
   position: absolute;
-  bottom: 50%;
+  bottom: 55%;
   right: 92%;
   color: $color-primary;
   font-size: 14rem;
@@ -31,4 +37,26 @@
 .testimonialDescription {
   text-align: justify;
   line-height: 1.8;
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }

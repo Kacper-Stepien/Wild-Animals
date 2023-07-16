@@ -4,4 +4,15 @@
   background-image: url(../../assets/contact_background.jpg);
   background-size: cover;
   background-position: bottom;
+  overflow-y: hidden;
+}
+
+.content {
+  max-width: 1200px;
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4rem;
 }
