@@ -1,0 +1,44 @@
+@import "../../styles/variables.scss";
+
+.filters {
+  background-color: rgba(0, 0, 0, 0.8);
+  max-width: 80vw;
+  width: 100%;
+  padding: 1rem 2rem;
+  border-radius: $border-radius;
+  margin-top: 6rem;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  margin-top: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.filtersList {
+  display: flex;
+  align-items: start;
+  flex-wrap: wrap;
+  gap: 1.6rem;
+  margin-bottom: 1.6rem;
+}
+
+.resetBtn {
+  margin-bottom: 1.2rem;
+  border: none;
+  outline: none;
+  border-radius: $border-radius;
+  background-color: $color-primary;
+  color: $color-white;
+  padding: 0.6rem 1.3rem;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    filter: brightness(1.2);
+  }
+}

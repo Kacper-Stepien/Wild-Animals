@@ -1,0 +1,53 @@
+@import "../../styles/variables.scss";
+
+.filter {
+  width: 20rem;
+  padding: 0.6rem 1rem;
+  border-radius: $border-radius;
+  background-color: $color-white;
+  color: $color-grey-dark;
+  position: relative;
+  font-size: 1.6rem;
+}
+
+.filterLabel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.filterList {
+  width: 20rem;
+  padding: 0.6rem 1rem;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.2rem;
+  border-radius: $border-radius;
+  background-color: $color-white;
+  color: $color-grey-dark;
+  position: absolute;
+  left: 0;
+  animation: fade 0.2s ease-in-out;
+  z-index: 10;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(10rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

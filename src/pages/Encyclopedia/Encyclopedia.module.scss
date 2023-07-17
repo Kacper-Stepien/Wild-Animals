@@ -1,7 +1,45 @@
+@import "../../styles/variables.scss";
+
 .page {
   width: 100%;
-  min-height: inherit;
+  height: inherit;
   background-image: url("../../assets/encyclopedia_background.jpg");
   background-size: cover;
   background-position: center;
+  overflow-y: hidden;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: stretch;
+}
+
+.animalsBox {
+  padding: 10rem 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  grid-gap: 4rem;
+}
+
+.noAnimals {
+  margin: 4rem;
+  font-size: 2rem;
+}
+
+.clearBtn {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  outline: none;
+  border-radius: $border-radius;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: $color-primary;
+    color: $color-white;
+  }
 }

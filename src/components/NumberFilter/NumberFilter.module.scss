@@ -1,0 +1,41 @@
+@import "../../styles/variables.scss";
+
+.filter {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+
+  font-size: 1.6rem;
+}
+
+.input {
+  width: 20rem;
+  border: none;
+  outline: none;
+  border-radius: $border-radius;
+  padding: 0.6rem 1rem;
+  font-size: inherit;
+}
+
+.clue {
+  position: absolute;
+  top: -2rem;
+  color: $color-white;
+  background-color: black;
+  font-size: 1.4rem;
+  padding: 0.2rem 0.4rem;
+  border-radius: $border-radius;
+  z-index: 2;
+
+  &::after {
+    position: absolute;
+    top: 60%;
+    left: 20%;
+    transform: rotate(45deg);
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    background-color: black;
+    z-index: -1;
+  }
+}
