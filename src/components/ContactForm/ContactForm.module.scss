@@ -24,6 +24,12 @@
   gap: 2rem;
 }
 
+.inputField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 .contactInput {
   padding: 0.5rem 1rem;
   border-radius: $border-radius;
@@ -32,10 +38,32 @@
   font-size: 1.8rem;
 }
 
+.error {
+  margin: 0;
+  font-size: 1.4rem;
+  color: red;
+}
+
 .contactTextarea {
   resize: none;
   width: 50rem;
   height: 15rem;
+}
+
+.contactBtn {
+  border: none;
+  outline: none;
+  border-radius: $border-radius;
+  padding: 1rem 2rem;
+  background-color: $color-primary;
+  color: $color-white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    filter: brightness(1.2);
+  }
 }
 
 @keyframes fadeInRight {

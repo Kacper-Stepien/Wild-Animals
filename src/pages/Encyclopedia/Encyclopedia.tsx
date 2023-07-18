@@ -88,7 +88,7 @@ export default function Encyclopedia() {
       if (currentPage) {
         filtersTemp += `&page=${currentPage}`;
       }
-      const address = `http://localhost:8000/api/v1/animals?per_page=9${filtersTemp}`;
+      const address = `https://wild-animals-api.onrender.com/api/v1/animals?per_page=9${filtersTemp}`;
       console.log(address);
       setParams(filtersTemp);
       const response = await fetch(address);

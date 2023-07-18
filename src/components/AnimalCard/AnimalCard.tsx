@@ -14,7 +14,7 @@ const AnimalCard: FC<AnimalCardProps> = ({ animal }) => {
         <div className={styles.cardTop}>
           <img
             className={styles.cardImage}
-            src={`http://localhost:8000/images/animals/${animal.photos[0]}`}
+            src={`https://wild-animals-api.onrender.com/images/animals/${animal.photos[0]}`}
             alt={animal.name}
           />
         </div>

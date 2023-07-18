@@ -47,7 +47,7 @@ export default function Animal() {
     try {
       setIsLoading(true);
       const response = await fetch(
-        `http://localhost:8000/api/v1/animals/${id}`
+        `https://wild-animals-api.onrender.com/api/v1/animals/${id}`
       );
       const data = await response.json();
       if (data.status === "success") {
@@ -73,7 +73,7 @@ export default function Animal() {
           {!isLoading && animal && (
             <>
               <Gallery
-                url="http://localhost:8000/images/animals"
+                url="https://wild-animals-api.onrender.com/images/animals"
                 images={animal.photos}
               />
               <h1 className={styles.title}>{animal.name}</h1>
