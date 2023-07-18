@@ -1,0 +1,71 @@
+@import "../../styles/variables.scss";
+
+.gallery {
+  max-width: 100rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem;
+  margin-top: 6rem;
+  padding: 2rem 4rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 1rem;
+  border: none;
+  border-radius: $border-radius;
+  background-color: transparent;
+  color: #fff;
+  font-size: 2.4rem;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.prevBtn {
+  position: absolute;
+  top: 50%;
+  left: 0;
+}
+
+.nextBtn {
+  position: absolute;
+  top: 50%;
+  right: 0;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+.imageIndex {
+  font-size: 1.4rem;
+  font-weight: bold;
+}

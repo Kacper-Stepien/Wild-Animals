@@ -115,11 +115,13 @@ export default function Encyclopedia() {
   return (
     <div className={styles.page}>
       <Overlay>
-        <Wrapper direction="column" justify="flex-start" align="center">
-          <Navbar>
-            <SearchBar />
-          </Navbar>
-          <Filters filters={filters} dispatch={dispatch} />
+        <Wrapper direction="column" justify="space-between" align="center">
+          <div className={styles.navigation}>
+            <Navbar>
+              <SearchBar />
+            </Navbar>
+            <Filters filters={filters} dispatch={dispatch} />
+          </div>
           <main className={styles.content}>
             {!isLoading && animals.length > 0 && (
               <>

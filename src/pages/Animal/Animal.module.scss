@@ -1,0 +1,65 @@
+@import "../../styles/variables.scss";
+
+.page {
+  width: 100%;
+  height: inherit;
+  background-image: url("../../assets/encyclopedia_background.jpg");
+  background-size: cover;
+  background-position: center;
+  overflow-x: hidden;
+}
+
+.gallery {
+  max-width: 80vw;
+
+  img {
+    width: 100%;
+  }
+}
+
+.title {
+  font-size: 3rem;
+  margin: 2rem;
+}
+
+.description {
+  max-width: 80vw;
+  margin: 4rem;
+}
+
+.backBtn {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.6rem 1.2rem;
+  outline: none;
+  border: none;
+  border-radius: $border-radius;
+  background-color: transparent;
+  color: $color-white;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.backBtnIcon {
+  font-size: 1rem;
+}
+
+.info {
+  max-width: 100rem;
+  width: 100%;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  gap: 4rem;
+}

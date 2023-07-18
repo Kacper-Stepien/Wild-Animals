@@ -1,0 +1,11 @@
+@import "../../styles/variables.scss";
+
+.description {
+  max-width: 100rem;
+  margin: 4rem;
+  padding: 4rem;
+  border-radius: $border-radius;
+  background-color: rgba(0, 0, 0, 0.8);
+  font-size: 1.8rem;
+  line-height: 2;
+}

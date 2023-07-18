@@ -1,12 +1,14 @@
 @import "../../styles/variables.scss";
 
 .filters {
+  margin: 0 auto;
   background-color: rgba(0, 0, 0, 0.8);
   max-width: 80vw;
   width: 100%;
   padding: 1rem 2rem;
   border-radius: $border-radius;
   margin-top: 6rem;
+  justify-self: flex-start;
 }
 
 .title {
