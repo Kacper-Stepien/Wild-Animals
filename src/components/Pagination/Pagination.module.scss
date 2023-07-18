@@ -1,0 +1,63 @@
+@import "../../styles/variables.scss";
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+}
+
+.prevBtn,
+.nextBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  outline: none;
+  border-radius: $border-radius;
+  background-color: transparent;
+  color: $color-white;
+  font-size: 1.8rem;
+
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: $color-primary;
+  }
+}
+
+.disabled {
+  z-index: -1;
+  cursor: not-allowed;
+}
+
+.pageBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  outline: none;
+  border-radius: $border-radius;
+  background-color: transparent;
+  color: $color-white;
+  font-size: 1.8rem;
+
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: $color-primary;
+  }
+}
+
+.active {
+  background-color: $color-white;
+  color: $color-primary;
+}

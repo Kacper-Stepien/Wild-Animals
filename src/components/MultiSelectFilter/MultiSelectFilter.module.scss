@@ -41,6 +41,17 @@
   cursor: pointer;
 }
 
+.clearBtn {
+  margin-top: 1rem;
+  padding: 0.4rem;
+  border: none;
+  outline: none;
+  border-radius: $border-radius;
+  background-color: $color-primary;
+  color: $color-white;
+  cursor: pointer;
+}
+
 @keyframes fade {
   from {
     opacity: 0;

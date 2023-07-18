@@ -12,6 +12,7 @@ interface MultiSelectFilterProps {
   checked: string[];
   addType: string;
   removeType: string;
+  clearType: string;
 }
 
 const MultiSelectFilter: FC<MultiSelectFilterProps> = ({
@@ -21,6 +22,7 @@ const MultiSelectFilter: FC<MultiSelectFilterProps> = ({
   checked,
   addType,
   removeType,
+  clearType,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const filterRef = useRef<HTMLDivElement>(null);
@@ -81,7 +83,7 @@ const MultiSelectFilter: FC<MultiSelectFilterProps> = ({
   return (
     <div className={styles.filter} ref={filterRef}>
       <div onClick={toggleDropdown} className={styles.filterLabel}>
-        {label}
+        {label} {checked.length > 0 ? `(${checked.length})` : ""}
         {isOpen ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown />}
       </div>
       {isOpen && (
@@ -106,6 +108,14 @@ const MultiSelectFilter: FC<MultiSelectFilterProps> = ({
               {option.label}
             </label>
           ))}
+          <button
+            className={styles.clearBtn}
+            onClick={() => {
+              dispatch({ type: clearType });
+            }}
+          >
+            Wyczyść
+          </button>
         </div>
       )}
     </div>

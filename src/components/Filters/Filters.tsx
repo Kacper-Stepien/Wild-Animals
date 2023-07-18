@@ -13,23 +13,17 @@ interface FiltersProps {
     lifestyle: string[];
     min_weight: number | null;
     max_weight: number | null;
-    min_width: number | null;
-    max_width: number | null;
+    min_length: number | null;
+    max_length: number | null;
   };
   dispatch: (action: { type: string; payload: string }) => void;
 }
 
 const Filters: FC<FiltersProps> = ({ filters, dispatch }) => {
   const [filtersOpen, setFiltersOpen] = useState(false);
-  console.log(filters);
-  const [params, setParams] = useSearchParams();
 
   const toggleOpen = () => {
     setFiltersOpen((prevState) => !prevState);
-  };
-
-  const xd = (options: { label: string; value: string }[]) => {
-    console.log(options);
   };
 
   return (
@@ -85,6 +79,7 @@ const Filters: FC<FiltersProps> = ({ filters, dispatch }) => {
               checked={filters.location}
               addType="SET_LOCATION"
               removeType="DELETE_LOCATION"
+              clearType="CLEAR_LOCATION"
             />
             <MultiSelectFilter
               label={"Gatunek"}
@@ -126,6 +121,7 @@ const Filters: FC<FiltersProps> = ({ filters, dispatch }) => {
               checked={filters.species}
               addType="SET_SPECIES"
               removeType="DELETE_SPECIES"
+              clearType="CLEAR_SPECIES"
             />
             <MultiSelectFilter
               label={"Dieta"}
@@ -170,10 +166,7 @@ const Filters: FC<FiltersProps> = ({ filters, dispatch }) => {
                   label: "Algożerne",
                   value: "algożerne",
                 },
-                {
-                  label: "Nektarożerne",
-                  value: "nektarożerne",
-                },
+
                 {
                   label: "Miodożerne",
                   value: "miodożerne",
@@ -183,6 +176,7 @@ const Filters: FC<FiltersProps> = ({ filters, dispatch }) => {
               checked={filters.diet}
               addType="SET_DIET"
               removeType="DELETE_DIET"
+              clearType="CLEAR_DIET"
             />
             <MultiSelectFilter
               label={"Tryb życia"}
@@ -212,6 +206,7 @@ const Filters: FC<FiltersProps> = ({ filters, dispatch }) => {
               checked={filters.lifestyle}
               addType="SET_LIFESTYLE"
               removeType="DELETE_LIFESTYLE"
+              clearType="CLEAR_LIFESTYLE"
             />
             <NumberFilter
               label={"Waga od (kg)"}
@@ -232,23 +227,23 @@ const Filters: FC<FiltersProps> = ({ filters, dispatch }) => {
               removeType="DELETE_MAX_WEIGHT"
             />
             <NumberFilter
-              label={"Szerokość od (cm)"}
+              label={"Długość od (cm)"}
               min={0}
               max={10000}
               dispatch={dispatch}
-              currentValue={filters.min_width}
-              addType="SET_MIN_WIDTH"
-              removeType="DELETE_MIN_WIDTH"
+              currentValue={filters.min_length}
+              addType="SET_MIN_LENGTH"
+              removeType="DELETE_MIN_LENGTH"
             />
 
             <NumberFilter
-              label={"Szerokość do (cm)"}
+              label={"Długość do (cm)"}
               min={20}
               max={10000}
               dispatch={dispatch}
-              currentValue={filters.max_width}
-              addType="SET_MAX_WIDTH"
-              removeType="DELETE_MAX_WIDTH"
+              currentValue={filters.max_length}
+              addType="SET_MAX_LENGTH"
+              removeType="DELETE_MAX_LENGTH"
             />
           </div>
           <button
@@ -257,7 +252,7 @@ const Filters: FC<FiltersProps> = ({ filters, dispatch }) => {
               dispatch({ type: "CLEAR_FILTERS" });
             }}
           >
-            Wyczyść{" "}
+            Wyczyść wszystkie filtry{" "}
           </button>
         </div>
       )}

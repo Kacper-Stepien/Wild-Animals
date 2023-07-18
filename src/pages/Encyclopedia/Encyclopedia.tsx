@@ -9,9 +9,11 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import Filters from "../../components/Filters/Filters";
 import AnimalCard from "../../components/AnimalCard/AnimalCard";
+import Pagination from "../../components/Pagination/Pagination";
 
 import Animal from "../../models/Animal";
 import FilterReducer from "../../reducers/FilterReducer";
+import usePagination from "../../hooks/usePagination";
 
 import styles from "./Encyclopedia.module.scss";
 
@@ -25,13 +27,27 @@ export default function Encyclopedia() {
       lifestyle: params.getAll("lifestyle") || [],
       min_weight: Number(params.get("min_weight")) || null,
       max_weight: Number(params.get("max_weight")) || null,
-      min_width: Number(params.get("min_width")) || null,
-      max_width: Number(params.get("max_width")) || null,
+      min_length: Number(params.get("min_length")) || null,
+      max_length: Number(params.get("max_length")) || null,
     };
   };
+  const getPageFromParams = () => {
+    let page = Number(params.get("page")) || 1;
+    if (page < 1) page = 1;
+    return page;
+  };
+
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [animals, setAnimals] = useState<Animal[]>([]);
   const [filters, dispatch] = useReducer(FilterReducer, setFiltersFromParams());
+  const {
+    currentPage,
+    nextPage,
+    prevPage,
+    goToPage,
+    totalPages,
+    setTotalPages,
+  } = usePagination(getPageFromParams());
 
   const fetchAnimals = async () => {
     try {
@@ -63,11 +79,14 @@ export default function Encyclopedia() {
       if (filters.max_weight) {
         filtersTemp += `&max_weight=${filters.max_weight}`;
       }
-      if (filters.min_width) {
-        filtersTemp += `&min_width=${filters.min_width}`;
+      if (filters.min_length) {
+        filtersTemp += `&min_length=${filters.min_length}`;
       }
-      if (filters.max_width) {
-        filtersTemp += `&max_width=${filters.max_width}`;
+      if (filters.max_length) {
+        filtersTemp += `&max_length=${filters.max_length}`;
+      }
+      if (currentPage) {
+        filtersTemp += `&page=${currentPage}`;
       }
       const address = `http://localhost:8000/api/v1/animals?per_page=9${filtersTemp}`;
       console.log(address);
@@ -76,6 +95,12 @@ export default function Encyclopedia() {
       const data = await response.json();
       console.log(data);
       setAnimals(data.data.animals);
+      let totalPage = Math.ceil(data.totalAnimals / 9);
+      console.log(totalPage);
+      if (totalPage === 0) totalPage = 1;
+      setTotalPages(totalPage);
+      console.log(currentPage);
+      if (currentPage > totalPage) goToPage(totalPage);
     } catch (error) {
       console.error(error);
     } finally {
@@ -85,7 +110,7 @@ export default function Encyclopedia() {
 
   useEffect(() => {
     fetchAnimals();
-  }, [filters]);
+  }, [filters, currentPage]);
 
   return (
     <div className={styles.page}>
@@ -96,13 +121,21 @@ export default function Encyclopedia() {
           </Navbar>
           <Filters filters={filters} dispatch={dispatch} />
           <main className={styles.content}>
-            {!isLoading && animals.length > 0 ? (
-              <div className={styles.animalsBox}>
-                {animals.map((animal) => (
-                  <AnimalCard key={animal._id} animal={animal} />
-                ))}
-              </div>
-            ) : (
+            {!isLoading && animals.length > 0 && (
+              <>
+                <div className={styles.animalsBox}>
+                  {animals.map((animal) => (
+                    <AnimalCard key={animal._id} animal={animal} />
+                  ))}
+                </div>
+                <Pagination
+                  totalPages={totalPages}
+                  currentPage={currentPage}
+                  goToPage={goToPage}
+                />
+              </>
+            )}
+            {!isLoading && animals.length === 0 && (
               <>
                 <p className={styles.noAnimals}>
                   Nie znaleziono zwierząt o wybranych filtrach
@@ -119,7 +152,6 @@ export default function Encyclopedia() {
             )}
             {isLoading ? <LoadingSpinner /> : null}
           </main>
-
           <Footer />
         </Wrapper>
       </Overlay>

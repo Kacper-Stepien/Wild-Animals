@@ -5,8 +5,8 @@ interface IFilterState {
   lifestyle: string[];
   min_weight: number | null;
   max_weight: number | null;
-  min_width: number | null;
-  max_width: number | null;
+  min_length: number | null;
+  max_length: number | null;
 }
 
 interface IFilterAction {
@@ -114,20 +114,25 @@ const reducerFilter = (
         ...state,
         max_weight: null,
       };
-    case "SET_MIN_WIDTH":
+    case "SET_MIN_LENGTH":
       return {
         ...state,
-        min_width: action.payload,
+        min_length: action.payload,
       };
-    case "SET_MAX_WIDTH":
+    case "DELETE_MIN_LENGTH":
       return {
         ...state,
-        max_width: action.payload,
+        min_length: null,
       };
-    case "DELETE_MIN_WIDTH":
+    case "SET_MAX_LENGTH":
       return {
         ...state,
-        min_width: null,
+        max_length: action.payload,
+      };
+    case "DELETE_MAX_LENGTH":
+      return {
+        ...state,
+        max_length: null,
       };
     case "CLEAR_FILTERS":
       return {
@@ -137,8 +142,8 @@ const reducerFilter = (
         lifestyle: [],
         min_weight: null,
         max_weight: null,
-        min_width: null,
-        max_width: null,
+        min_length: null,
+        max_length: null,
       };
     case "SET_FILTERS_FROM_URL":
       const newFilters = {
@@ -148,8 +153,8 @@ const reducerFilter = (
         lifestyle: action.payload.getAll("lifestyle") || [],
         min_weight: action.payload.get("min_weight") || null,
         max_weight: action.payload.get("max_weight") || null,
-        min_width: action.payload.get("min_width") || null,
-        max_width: action.payload.get("max_width") || null,
+        min_length: action.payload.get("min_length") || null,
+        max_length: action.payload.get("max_length") || null,
       };
       return newFilters;
     default:
