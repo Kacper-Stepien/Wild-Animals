@@ -17,7 +17,7 @@ interface FiltersProps {
     min_length: number | null;
     max_length: number | null;
   };
-  dispatch: (action: { type: string; payload: string }) => void;
+  dispatch: (action: { type: string; payload: string | number }) => void;
 }
 
 const Filters: FC<FiltersProps> = ({ filters, dispatch }) => {

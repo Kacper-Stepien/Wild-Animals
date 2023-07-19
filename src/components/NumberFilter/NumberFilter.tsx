@@ -5,7 +5,7 @@ interface NumberFilterProps {
   label: string;
   min: number;
   max: number;
-  dispatch: (action: { type: string; payload: string }) => void;
+  dispatch: (action: { type: string; payload: string | number }) => void;
   currentValue: number | null;
   addType: string;
   removeType: string;
@@ -24,13 +24,13 @@ const NumberFilter: FC<NumberFilterProps> = ({
   const [clueIsVisible, setClueIsVisible] = useState(false);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(parseFloat(event.target.value));
+    const newValue = event.target.value;
+    setInputValue(newValue !== "" ? parseFloat(newValue) : null);
   };
 
   const handleInputBlur = () => {
-    console.log(inputValue);
-    if (inputValue !== null && !isNaN(inputValue)) {
-      dispatch({ type: addType, payload: inputValue.toString() });
+    if (inputValue !== null) {
+      dispatch({ type: addType, payload: inputValue });
     } else if (currentValue) {
       dispatch({ type: removeType, payload: "" });
     }
@@ -58,7 +58,7 @@ const NumberFilter: FC<NumberFilterProps> = ({
         type="number"
         min={min}
         max={max}
-        value={inputValue !== null ? inputValue.toString() : ""}
+        value={inputValue !== null ? inputValue : ""}
         placeholder={label}
         className={styles.input}
         onChange={handleInputChange}
