@@ -1,5 +1,8 @@
 import { FC } from "react";
 import { NavLink } from "react-router-dom";
+
+import Logo from "../Logo/Logo";
+
 import styles from "./NavbarList.module.scss";
 
 interface NavbarListProps {
@@ -18,7 +21,7 @@ const NavbarList: FC<NavbarListProps> = ({ mobile }) => {
               : styles.navbarElement;
           }}
         >
-          Główna
+          <Logo />
         </NavLink>
       </li>
       <li>

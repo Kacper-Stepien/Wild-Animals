@@ -1,0 +1,14 @@
+.logo {
+  width: 14rem;
+}
+
+.logoImg {
+  width: 100%;
+  object-fit: contain;
+}
+
+@media only screen and (max-width: 1000px) {
+  .logo {
+    width: 26rem;
+  }
+}
