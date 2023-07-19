@@ -20,12 +20,14 @@ const reducerFilter = (
 ): FilterState => {
   switch (action.type) {
     case "SET_LOCATION":
+      if (typeof action.payload !== "string") throw new Error("Invalid type");
       const newLocations = [...state.location, action.payload];
       return {
         ...state,
         location: newLocations,
       };
     case "DELETE_LOCATION":
+      if (typeof action.payload !== "string") throw new Error("Invalid type");
       const updatedLocations = state.location.filter(
         (location) => location !== action.payload
       );
@@ -39,12 +41,14 @@ const reducerFilter = (
         location: [],
       };
     case "SET_SPECIES":
+      if (typeof action.payload !== "string") throw new Error("Invalid type");
       const newSpecies = [...state.species, action.payload];
       return {
         ...state,
         species: newSpecies,
       };
     case "DELETE_SPECIES":
+      if (typeof action.payload !== "string") throw new Error("Invalid type");
       const updatedSpecies = state.species.filter(
         (species) => species !== action.payload
       );
@@ -58,12 +62,14 @@ const reducerFilter = (
         species: [],
       };
     case "SET_DIET":
+      if (typeof action.payload !== "string") throw new Error("Invalid type");
       const newDiet = [...state.diet, action.payload];
       return {
         ...state,
         diet: newDiet,
       };
     case "DELETE_DIET":
+      if (typeof action.payload !== "string") throw new Error("Invalid type");
       const updatedDiet = state.diet.filter((diet) => diet !== action.payload);
       return {
         ...state,
@@ -75,12 +81,14 @@ const reducerFilter = (
         diet: [],
       };
     case "SET_LIFESTYLE":
+      if (typeof action.payload !== "string") throw new Error("Invalid type");
       const newLifestyle = [...state.lifestyle, action.payload];
       return {
         ...state,
         lifestyle: newLifestyle,
       };
     case "DELETE_LIFESTYLE":
+      if (typeof action.payload !== "string") throw new Error("Invalid type");
       const updatedLifestyle = state.lifestyle.filter(
         (lifestyle) => lifestyle !== action.payload
       );
@@ -94,6 +102,7 @@ const reducerFilter = (
         lifestyle: [],
       };
     case "SET_MIN_WEIGHT":
+      if (typeof action.payload === "string") throw new Error("Invalid type");
       return {
         ...state,
         min_weight: action.payload,
@@ -104,6 +113,7 @@ const reducerFilter = (
         min_weight: null,
       };
     case "SET_MAX_WEIGHT":
+      if (typeof action.payload === "string") throw new Error("Invalid type");
       return {
         ...state,
         max_weight: action.payload,
@@ -114,6 +124,7 @@ const reducerFilter = (
         max_weight: null,
       };
     case "SET_MIN_LENGTH":
+      if (typeof action.payload === "string") throw new Error("Invalid type");
       return {
         ...state,
         min_length: action.payload,
@@ -124,6 +135,7 @@ const reducerFilter = (
         min_length: null,
       };
     case "SET_MAX_LENGTH":
+      if (typeof action.payload === "string") throw new Error("Invalid type");
       return {
         ...state,
         max_length: action.payload,

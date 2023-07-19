@@ -18,7 +18,7 @@ const NavbarList: FC<NavbarListProps> = ({ mobile }) => {
               : styles.navbarElement;
           }}
         >
-          Główna
+          <img src="/src/assets/Logo.png" alt="logo" className={styles.logo} />
         </NavLink>
       </li>
       <li>

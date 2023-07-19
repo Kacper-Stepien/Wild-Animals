@@ -2,14 +2,14 @@ import React, { FC } from "react";
 
 interface WrapperProps {
   direction: "row" | "column";
-  justify:
+  justify?:
     | "center"
     | "flex-start"
     | "flex-end"
     | "space-between"
     | "space-around"
     | "space-evenly";
-  align:
+  align?:
     | "center"
     | "flex-start"
     | "flex-end"

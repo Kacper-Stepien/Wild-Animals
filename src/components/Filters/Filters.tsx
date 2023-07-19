@@ -250,7 +250,7 @@ const Filters: FC<FiltersProps> = ({ filters, dispatch }) => {
           <button
             className={styles.resetBtn}
             onClick={() => {
-              dispatch({ type: "CLEAR_FILTERS" });
+              dispatch({ type: "CLEAR_FILTERS", payload: "" });
             }}
           >
             Wyczyść wszystkie filtry{" "}

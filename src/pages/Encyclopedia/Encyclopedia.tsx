@@ -142,7 +142,7 @@ export default function Encyclopedia() {
                 <button
                   className={styles.clearBtn}
                   onClick={() => {
-                    dispatch({ type: "CLEAR_FILTERS" });
+                    dispatch({ type: "CLEAR_FILTERS", payload: null });
                   }}
                 >
                   Wyczyść filtry

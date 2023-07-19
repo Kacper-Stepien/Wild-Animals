@@ -58,7 +58,7 @@ export default function ContactForm() {
   return (
     <div className={styles.contact}>
       <h2 className={styles.title}>Wyślij mi wiadomość</h2>
-      <form className={styles.contactForm}>
+      <form className={styles.contactForm} onSubmit={handleSubmit}>
         <div className={styles.inputField}>
           <input
             type="text"
@@ -84,7 +84,7 @@ export default function ContactForm() {
           onChange={(e) => setMessage(e.target.value)}
         />
         <span className={styles.error}>{messageError}</span>
-        <button className={styles.contactBtn} onClick={handleSubmit}>
+        <button type="submit" className={styles.contactBtn}>
           Wyślij
         </button>
       </form>

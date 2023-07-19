@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { IconType } from "react-icons";
 
 import styles from "./AnimalTestimonial.module.scss";
@@ -8,7 +8,7 @@ interface AnimalTestimonialProps {
   infos: {
     icon: IconType;
     title: string;
-    description: string;
+    description: string | number | undefined;
   }[];
 }
 

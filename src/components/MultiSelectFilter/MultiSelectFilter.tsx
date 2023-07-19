@@ -77,7 +77,7 @@ const MultiSelectFilter: FC<MultiSelectFilterProps> = ({
           <button
             className={styles.clearBtn}
             onClick={() => {
-              dispatch({ type: clearType });
+              dispatch({ type: clearType, payload: "" });
             }}
           >
             Wyczyść
