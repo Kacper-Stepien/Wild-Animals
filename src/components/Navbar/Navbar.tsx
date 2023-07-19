@@ -1,6 +1,7 @@
 import React, { FC, useEffect } from "react";
-import { NavLink } from "react-router-dom";
 import { IoMenu, IoClose } from "react-icons/io5";
+
+import NavbarList from "./NavbarList";
 
 import styles from "./Navbar.module.scss";
 
@@ -29,58 +30,7 @@ const Navbar: FC<NavbarProps> = ({ children }) => {
 
   return (
     <nav className={styles.navbar}>
-      {!isMobile && (
-        <ul className={styles.navbarList}>
-          <li>
-            <NavLink
-              to="/"
-              className={({ isActive }) => {
-                return isActive
-                  ? `${styles.navbarElement} ${styles.navbarElementActive}`
-                  : styles.navbarElement;
-              }}
-            >
-              Główna
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/encyclopedia"
-              className={({ isActive }) => {
-                return isActive
-                  ? `${styles.navbarElement} ${styles.navbarElementActive}`
-                  : styles.navbarElement;
-              }}
-            >
-              Encyklopedia
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/about"
-              className={({ isActive }) => {
-                return isActive
-                  ? `${styles.navbarElement} ${styles.navbarElementActive}`
-                  : styles.navbarElement;
-              }}
-            >
-              O nas
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/contact"
-              className={({ isActive }) => {
-                return isActive
-                  ? `${styles.navbarElement} ${styles.navbarElementActive}`
-                  : styles.navbarElement;
-              }}
-            >
-              Kontakt
-            </NavLink>
-          </li>
-        </ul>
-      )}
+      {!isMobile && <NavbarList />}
       {isMobile && (
         <button
           className={styles.mobileMenuBtn}
@@ -91,56 +41,7 @@ const Navbar: FC<NavbarProps> = ({ children }) => {
       )}
       {isMobile && isMobileMenuOpen && (
         <div className={styles.mobileMenu}>
-          <ul className={styles.mobileList}>
-            <li>
-              <NavLink
-                to="/"
-                className={({ isActive }) => {
-                  return isActive
-                    ? `${styles.navbarElement} ${styles.navbarElementActive}`
-                    : styles.navbarElement;
-                }}
-              >
-                Główna
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/encyclopedia"
-                className={({ isActive }) => {
-                  return isActive
-                    ? `${styles.navbarElement} ${styles.navbarElementActive}`
-                    : styles.navbarElement;
-                }}
-              >
-                Encyklopedia
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/about"
-                className={({ isActive }) => {
-                  return isActive
-                    ? `${styles.navbarElement} ${styles.navbarElementActive}`
-                    : styles.navbarElement;
-                }}
-              >
-                O nas
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/contact"
-                className={({ isActive }) => {
-                  return isActive
-                    ? `${styles.navbarElement} ${styles.navbarElementActive}`
-                    : styles.navbarElement;
-                }}
-              >
-                Kontakt
-              </NavLink>
-            </li>
-          </ul>
+          <NavbarList mobile={true} />
         </div>
       )}
       {children}

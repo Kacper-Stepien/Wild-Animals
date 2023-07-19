@@ -15,7 +15,6 @@ body {
   color: $color-white;
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar {
   width: 1.2rem;
 }
@@ -32,7 +31,6 @@ body {
   background: $color-grey-dark;
 }
 
-// Media Queries
 @media only screen and (max-width: 800px) {
   html {
     font-size: 56.25%;

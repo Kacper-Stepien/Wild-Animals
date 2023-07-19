@@ -40,66 +40,63 @@ export default function Encyclopedia() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [animals, setAnimals] = useState<Animal[]>([]);
   const [filters, dispatch] = useReducer(FilterReducer, setFiltersFromParams());
-  const {
-    currentPage,
-    nextPage,
-    prevPage,
-    goToPage,
-    totalPages,
-    setTotalPages,
-  } = usePagination(getPageFromParams());
+  const { currentPage, goToPage, totalPages, setTotalPages } = usePagination(
+    getPageFromParams()
+  );
+
+  const buildFiltersTempString = () => {
+    let filtersTemp = "";
+    if (filters.location.length > 0) {
+      filters.location.forEach((loc) => {
+        filtersTemp += `&location=${loc}`;
+      });
+    }
+    if (filters.species.length > 0) {
+      filters.species.forEach((spec) => {
+        filtersTemp += `&species=${spec}`;
+      });
+    }
+    if (filters.diet.length > 0) {
+      filters.diet.forEach((d) => {
+        filtersTemp += `&diet=${d}`;
+      });
+    }
+    if (filters.lifestyle.length > 0) {
+      filters.lifestyle.forEach((l) => {
+        filtersTemp += `&lifestyle=${l}`;
+      });
+    }
+    if (filters.min_weight) {
+      filtersTemp += `&min_weight=${filters.min_weight}`;
+    }
+    if (filters.max_weight) {
+      filtersTemp += `&max_weight=${filters.max_weight}`;
+    }
+    if (filters.min_length) {
+      filtersTemp += `&min_length=${filters.min_length}`;
+    }
+    if (filters.max_length) {
+      filtersTemp += `&max_length=${filters.max_length}`;
+    }
+    if (currentPage) {
+      filtersTemp += `&page=${currentPage}`;
+    }
+
+    return filtersTemp;
+  };
 
   const fetchAnimals = async () => {
     try {
       setIsLoading(true);
-      let filtersTemp = "";
-      if (filters.location.length > 0) {
-        filters.location.forEach((loc) => {
-          filtersTemp += `&location=${loc}`;
-        });
-      }
-      if (filters.species.length > 0) {
-        filters.species.forEach((spec) => {
-          filtersTemp += `&species=${spec}`;
-        });
-      }
-      if (filters.diet.length > 0) {
-        filters.diet.forEach((d) => {
-          filtersTemp += `&diet=${d}`;
-        });
-      }
-      if (filters.lifestyle.length > 0) {
-        filters.lifestyle.forEach((l) => {
-          filtersTemp += `&lifestyle=${l}`;
-        });
-      }
-      if (filters.min_weight) {
-        filtersTemp += `&min_weight=${filters.min_weight}`;
-      }
-      if (filters.max_weight) {
-        filtersTemp += `&max_weight=${filters.max_weight}`;
-      }
-      if (filters.min_length) {
-        filtersTemp += `&min_length=${filters.min_length}`;
-      }
-      if (filters.max_length) {
-        filtersTemp += `&max_length=${filters.max_length}`;
-      }
-      if (currentPage) {
-        filtersTemp += `&page=${currentPage}`;
-      }
-      const address = `https://wild-animals-api.onrender.com/api/v1/animals?per_page=9${filtersTemp}`;
-      console.log(address);
+      const filtersTemp = buildFiltersTempString();
+      const address = `https://wild-animals-api.onrender.com/api/v1/animals?per_page=6${filtersTemp}`;
       setParams(filtersTemp);
       const response = await fetch(address);
       const data = await response.json();
-      console.log(data);
       setAnimals(data.data.animals);
-      let totalPage = Math.ceil(data.totalAnimals / 9);
-      console.log(totalPage);
+      let totalPage = Math.ceil(data.totalAnimals / 6);
       if (totalPage === 0) totalPage = 1;
       setTotalPages(totalPage);
-      console.log(currentPage);
       if (currentPage > totalPage) goToPage(totalPage);
     } catch (error) {
       console.error(error);

@@ -10,7 +10,7 @@ type SearchBarProps = {
   placeholder?: string;
 };
 
-const SearchBar: FC<SearchBarProps> = ({ placeholder = "Search" }) => {
+const SearchBar: FC<SearchBarProps> = ({ placeholder = "Szukaj" }) => {
   const searchInputRef = useRef<HTMLInputElement>(null);
   const [searchResults, setSearchResults] = useState<AnimalModel[]>([]);
   const [isFocused, setIsFocused] = useState<boolean>(false);
@@ -108,10 +108,10 @@ const SearchBar: FC<SearchBarProps> = ({ placeholder = "Search" }) => {
           {!isLoading &&
             searchInputRef.current?.value.length !== 0 &&
             searchResults.length === 0 && (
-              <p className={styles.message}>No results</p>
+              <p className={styles.message}>Brak wyników</p>
             )}
           {!isLoading && searchInputRef.current?.value.length === 0 && (
-            <p className={styles.message}>Type something</p>
+            <p className={styles.message}>Napisz coś</p>
           )}
         </div>
       )}

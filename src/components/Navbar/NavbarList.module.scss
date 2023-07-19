@@ -1,0 +1,53 @@
+@import "../../styles/variables.scss";
+
+.navbarList {
+  display: flex;
+  align-items: center;
+  gap: 6rem;
+  list-style: none;
+}
+
+.navbarElement {
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: $color-grey-light;
+  text-decoration: none;
+
+  &:hover {
+    color: $color-white;
+    text-decoration: underline;
+  }
+}
+
+.navbarElementActive {
+  color: $color-white;
+}
+
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba($color: #000000, $alpha: 0.9);
+  z-index: 100;
+}
+
+.mobileList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6rem;
+  list-style: none;
+
+  .navbarElement {
+    font-size: 3rem;
+  }
+
+  .navbarElementActive {
+    color: $color-primary;
+  }
+}

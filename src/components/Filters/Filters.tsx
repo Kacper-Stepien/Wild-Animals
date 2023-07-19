@@ -1,8 +1,9 @@
 import { useState, FC } from "react";
-import { useSearchParams } from "react-router-dom";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
+
 import MultiSelectFilter from "../MultiSelectFilter/MultiSelectFilter";
 import NumberFilter from "../NumberFilter/NumberFilter";
+
 import styles from "./Filters.module.scss";
 
 interface FiltersProps {

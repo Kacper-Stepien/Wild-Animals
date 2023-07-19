@@ -14,8 +14,8 @@ export default function ContactInfo() {
       </div>
       <div className={styles.element}>
         <FaEnvelope className={styles.icon} />
-        <a href="mailto:wildanimals@gmail.com" className={styles.link}>
-          wildanimals@gmail.com
+        <a href="mailto:kacper2007x48@gmail.com" className={styles.link}>
+          kacper2007x48@gmail.com
         </a>
       </div>
       <div className={styles.element}>

@@ -1,4 +1,4 @@
-interface IFilterState {
+interface FilterState {
   location: string[];
   species: string[];
   diet: string[];
@@ -9,19 +9,18 @@ interface IFilterState {
   max_length: number | null;
 }
 
-interface IFilterAction {
+interface FilterAction {
   type: string;
   payload: string | number | null;
 }
 
 const reducerFilter = (
-  state: IFilterState,
-  action: IFilterAction
-): IFilterState => {
+  state: FilterState,
+  action: FilterAction
+): FilterState => {
   switch (action.type) {
     case "SET_LOCATION":
       const newLocations = [...state.location, action.payload];
-      console.log(newLocations);
       return {
         ...state,
         location: newLocations,
@@ -145,18 +144,7 @@ const reducerFilter = (
         min_length: null,
         max_length: null,
       };
-    case "SET_FILTERS_FROM_URL":
-      const newFilters = {
-        location: action.payload.getAll("location") || [],
-        species: action.payload.getAll("species") || [],
-        diet: action.payload.getAll("diet") || [],
-        lifestyle: action.payload.getAll("lifestyle") || [],
-        min_weight: action.payload.get("min_weight") || null,
-        max_weight: action.payload.get("max_weight") || null,
-        min_length: action.payload.get("min_length") || null,
-        max_length: action.payload.get("max_length") || null,
-      };
-      return newFilters;
+
     default:
       throw new Error("Invalid action type");
   }

@@ -40,9 +40,9 @@ export default function Animal() {
   const [isLoading, setIsLoading] = useState(true);
   const [animal, setAnimal] = useState<AnimalModel>();
 
-  // check previous url
-  const previousURL = document.referrer;
-  console.log(previousURL);
+  const prevURLIsTheSameDomain = document.referrer.includes(
+    window.location.origin
+  );
 
   const fetchAnimal = async () => {
     try {
@@ -63,9 +63,127 @@ export default function Animal() {
     }
   };
 
+  const testimonialData = [
+    {
+      name: "Charakterystyka",
+      infos: [
+        {
+          icon: VscTypeHierarchySub,
+          title: "Gatunek",
+          description: animal?.species,
+        },
+        {
+          icon: BiLineChart,
+          title: "Populacja",
+          description: animal?.population,
+        },
+        {
+          icon: BiGroup,
+          title: "Styl życia",
+          description: animal?.lifestyle,
+        },
+        {
+          icon: BiSolidColorFill,
+          title: "Kolorystyka",
+          description: animal?.color.join(", "),
+        },
+        {
+          icon: FaCat,
+          title: "Rodzaj skóry",
+          description: animal?.skin_type,
+        },
+      ],
+    },
+    {
+      name: "Występowanie",
+      infos: [
+        {
+          icon: BiWorld,
+          title: "Lokalizacja",
+          description: animal?.location.join(", "),
+        },
+        {
+          icon: FaTree,
+          title: "Środowisko",
+          description: animal?.habitat.join(", "),
+        },
+      ],
+    },
+    {
+      name: "Odżywianie",
+      infos: [
+        {
+          icon: FaBowlFood,
+          title: "Sposób odżywiania",
+          description: animal?.diet,
+        },
+        {
+          icon: animal?.diet === "mięsożerne" ? TbMeat : FaLeaf,
+          title: "Główne przysmaki",
+          description: animal?.prey.join(", "),
+        },
+        {
+          icon: IoWarning,
+          title: "Zagrożenia",
+          description: animal?.predators.join(", "),
+        },
+      ],
+    },
+    {
+      name: "Liczby",
+      infos: [
+        {
+          icon: RxWidth,
+          title: "Długość",
+          description: `${animal?.min_length} - ${animal?.max_length} cm`,
+        },
+        {
+          icon: RxHeight,
+          title: "Wysokość",
+          description: `${animal?.min_height} - ${animal?.max_height} cm`,
+        },
+        {
+          icon: FaWeightHanging,
+          title: "Waga",
+          description: `${animal?.min_weight} - ${animal?.max_weight} kg`,
+        },
+        {
+          icon: FaHeart,
+          title: "Długość życia",
+          description: `${animal?.min_life_span} - ${animal?.max_life_span} lat`,
+        },
+        {
+          icon: BsSpeedometer,
+          title: "Maksymalna prędkość",
+          description: `${animal?.max_speed} km/h`,
+        },
+      ],
+    },
+    {
+      name: "Rozmnażanie",
+      infos: [
+        {
+          icon: BiSolidTimeFive,
+          title: "Okres ciąży",
+          description: `${animal?.gestation_period}`,
+        },
+        {
+          icon: FaChildren,
+          title: "Średnia liczba miotu",
+          description: `${animal?.average_litter_size}`,
+        },
+        {
+          icon: BiSolidTimeFive,
+          title: "Dojrzałość płciowa",
+          description: `${animal?.age_of_weaning}`,
+        },
+      ],
+    },
+  ];
+
   useEffect(() => {
     fetchAnimal();
-  }, []);
+  }, [id]);
 
   return (
     <div className={styles.page}>
@@ -80,121 +198,13 @@ export default function Animal() {
               <h1 className={styles.title}>{animal.name}</h1>
               <AnimalDescription description={animal.description} />
               <div className={styles.info}>
-                <AnimalTestimonial
-                  name="Charakterystyka"
-                  infos={[
-                    {
-                      icon: VscTypeHierarchySub,
-                      title: "Gatunek",
-                      description: animal.species,
-                    },
-                    {
-                      icon: BiLineChart,
-                      title: "Populacja",
-                      description: animal.population,
-                    },
-                    {
-                      icon: BiGroup,
-                      title: "Styl życia",
-                      description: animal.lifestyle,
-                    },
-                    {
-                      icon: BiSolidColorFill,
-                      title: "Kolorystyka",
-                      description: animal.color.join(", "),
-                    },
-                    {
-                      icon: FaCat,
-                      title: "Rodzaj skóry",
-                      description: animal.skin_type,
-                    },
-                  ]}
-                />
-                <AnimalTestimonial
-                  name="Występowanie"
-                  infos={[
-                    {
-                      icon: BiWorld,
-                      title: "Lokalizacja",
-                      description: animal.location.join(", "),
-                    },
-                    {
-                      icon: FaTree,
-                      title: "Środowisko",
-                      description: animal.habitat.join(", "),
-                    },
-                  ]}
-                />
-                <AnimalTestimonial
-                  name="Odżywianie"
-                  infos={[
-                    {
-                      icon: FaBowlFood,
-                      title: "Sposób odżywiania",
-                      description: animal.diet,
-                    },
-                    {
-                      icon: animal.diet === "mięsożerne" ? TbMeat : FaLeaf,
-                      title: "Główne przysmaki",
-                      description: animal.prey.join(", "),
-                    },
-                    {
-                      icon: IoWarning,
-                      title: "Zagrożenia",
-                      description: animal.predators.join(", "),
-                    },
-                  ]}
-                />
-                <AnimalTestimonial
-                  name="Liczby"
-                  infos={[
-                    {
-                      icon: RxWidth,
-                      title: "Długość",
-                      description: `${animal.min_length} - ${animal.max_length} cm`,
-                    },
-                    {
-                      icon: RxHeight,
-                      title: "Wysokość",
-                      description: `${animal.min_height} - ${animal.max_height} cm`,
-                    },
-                    {
-                      icon: FaWeightHanging,
-                      title: "Waga",
-                      description: `${animal.min_weight} - ${animal.max_weight} kg`,
-                    },
-                    {
-                      icon: FaHeart,
-                      title: "Długość życia",
-                      description: `${animal.min_life_span} - ${animal.max_life_span} lat`,
-                    },
-                    {
-                      icon: BsSpeedometer,
-                      title: "Maksymalna prędkość",
-                      description: `${animal.max_speed} km/h`,
-                    },
-                  ]}
-                />
-                <AnimalTestimonial
-                  name="Rozmnażanie"
-                  infos={[
-                    {
-                      icon: BiSolidTimeFive,
-                      title: "Okres ciąży",
-                      description: `${animal.gestation_period}`,
-                    },
-                    {
-                      icon: FaChildren,
-                      title: "Średnia liczba miotu",
-                      description: `${animal.average_litter_size}`,
-                    },
-                    {
-                      icon: BiSolidTimeFive,
-                      title: "Dojrzałość płciowa",
-                      description: `${animal.age_of_weaning}`,
-                    },
-                  ]}
-                />
+                {testimonialData.map((data) => (
+                  <AnimalTestimonial
+                    key={data.name}
+                    name={data.name}
+                    infos={data.infos}
+                  />
+                ))}
               </div>
               <AnimalTrivia trivia={animal.trivia} />
             </>
@@ -202,7 +212,7 @@ export default function Animal() {
           {isLoading && <LoadingSpinner />}
           <Footer />
         </Wrapper>
-        {previousURL.includes("encyclopedia") && (
+        {prevURLIsTheSameDomain && (
           <button
             className={styles.backBtn}
             onClick={() => window.history.back()}
@@ -211,13 +221,6 @@ export default function Animal() {
             Wróć
           </button>
         )}
-        {/* <button
-          className={styles.backBtn}
-          onClick={() => window.history.back()}
-        >
-          <SlArrowLeft className={styles.backBtnIcon} />
-          Wróć
-        </button> */}
       </Overlay>
     </div>
   );

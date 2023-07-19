@@ -28,9 +28,10 @@ const NumberFilter: FC<NumberFilterProps> = ({
   };
 
   const handleInputBlur = () => {
+    console.log(inputValue);
     if (inputValue !== null && !isNaN(inputValue)) {
       dispatch({ type: addType, payload: inputValue.toString() });
-    } else {
+    } else if (currentValue) {
       dispatch({ type: removeType, payload: "" });
     }
   };
