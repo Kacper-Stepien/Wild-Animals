@@ -13,5 +13,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 4rem;
+  gap: 2rem;
+}
+
+@media screen and (max-width: 1050px) {
+  .content {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .content {
+    padding: 2rem 0;
+  }
 }

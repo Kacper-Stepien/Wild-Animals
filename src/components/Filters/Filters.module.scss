@@ -21,10 +21,11 @@
 }
 
 .filtersList {
+  width: 100%;
   display: flex;
-  align-items: start;
   flex-wrap: wrap;
   gap: 1.6rem;
+  margin: 0 auto;
   margin-bottom: 1.6rem;
 }
 
@@ -42,5 +43,22 @@
 
   &:hover {
     filter: brightness(1.2);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .filters {
+    max-width: 100%;
+    border-radius: 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .filters {
+    margin-top: 2rem;
+  }
+
+  .filtersList {
+    justify-content: center;
   }
 }

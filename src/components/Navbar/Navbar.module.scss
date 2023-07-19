@@ -30,3 +30,60 @@
 .navbarElementActive {
   color: $color-white;
 }
+
+.mobileMenuBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: $color-white;
+  font-size: 5rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  z-index: 101;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba($color: #000000, $alpha: 0.9);
+  z-index: 100;
+}
+
+.mobileList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6rem;
+  list-style: none;
+
+  .navbarElement {
+    font-size: 3rem;
+  }
+
+  .navbarElementActive {
+    color: $color-primary;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .navbar {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .mobileMenuBtn {
+    align-self: flex-start;
+  }
+}

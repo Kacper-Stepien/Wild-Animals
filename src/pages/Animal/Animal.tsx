@@ -42,6 +42,7 @@ export default function Animal() {
 
   // check previous url
   const previousURL = document.referrer;
+  console.log(previousURL);
 
   const fetchAnimal = async () => {
     try {
@@ -210,6 +211,13 @@ export default function Animal() {
             Wróć
           </button>
         )}
+        {/* <button
+          className={styles.backBtn}
+          onClick={() => window.history.back()}
+        >
+          <SlArrowLeft className={styles.backBtnIcon} />
+          Wróć
+        </button> */}
       </Overlay>
     </div>
   );

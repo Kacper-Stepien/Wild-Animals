@@ -44,3 +44,11 @@
     transform: translateX(0);
   }
 }
+
+@media screen and (max-width: 600px) {
+  .contact {
+    padding: 4rem 2rem;
+    width: 100%;
+    border-radius: 0;
+  }
+}

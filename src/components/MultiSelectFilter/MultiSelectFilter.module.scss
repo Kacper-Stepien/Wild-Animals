@@ -62,3 +62,9 @@
     transform: translateY(0);
   }
 }
+
+@media screen and (max-width: 600px) {
+  .filter {
+    flex-grow: 1;
+  }
+}

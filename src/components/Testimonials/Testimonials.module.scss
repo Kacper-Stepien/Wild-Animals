@@ -6,3 +6,15 @@
   flex-direction: column;
   align-items: start;
 }
+
+@media screen and (max-width: 800px) {
+  .testimonials {
+    padding: 6rem 2rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .testimonials {
+    padding: 4rem 0;
+  }
+}

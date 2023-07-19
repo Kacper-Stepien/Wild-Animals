@@ -47,3 +47,16 @@
     color: $color-white;
   }
 }
+
+@media screen and (max-width: 1000px) {
+  .animalsBox {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .animalsBox {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 4rem;
+  }
+}

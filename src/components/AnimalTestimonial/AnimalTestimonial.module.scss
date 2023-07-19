@@ -36,3 +36,24 @@
   justify-content: space-between;
   gap: 4rem;
 }
+
+@media screen and (max-width: 600px) {
+  .title {
+    font-size: 1.6rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .testimonialData {
+    gap: 2rem;
+    justify-content: center;
+  }
+
+  .info {
+    flex-direction: column;
+
+    justify-content: center;
+    text-align: center;
+    gap: 1rem;
+  }
+}

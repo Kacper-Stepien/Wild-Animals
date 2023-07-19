@@ -9,3 +9,16 @@
   font-size: 1.8rem;
   line-height: 2;
 }
+
+@media screen and (max-width: 800px) {
+  .description {
+    margin: 4rem 0;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .description {
+    padding: 2rem;
+    font-size: 1.6rem;
+  }
+}
